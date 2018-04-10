@@ -1,0 +1,17 @@
+@(user: User, posts: List[Post])
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Global Feed</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                @for(post <- posts){
+                    <li>@post.text</li>
+                }
+            </ul>
+        </div>
+    </body>
+</html>

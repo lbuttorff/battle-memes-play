@@ -4,14 +4,21 @@
     <head>
         <meta charset="UTF-8">
         <title>Global Feed</title>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
     </head>
     <body>
+        @header(user)
+
         <div>
-            <ul>
+            <table>
                 @for(post <- posts){
-                    <li>@post.text</li>
+                    <tr><td>@post.getText()</td>
+                        <td>@post.getUser().getUsername()</td>
+                        <td>@post.getPostDate()</td>
+                    </tr>
                 }
-            </ul>
+            </table>
         </div>
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </body>
 </html>

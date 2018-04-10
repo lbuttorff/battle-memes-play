@@ -1,0 +1,16 @@
+#header {
+    position:absolute;
+    width: 100%;
+    top: 0;
+    height: 60px;
+    background: lightblue;
+}
+#right-header-buttons {
+    margin: 10px;
+    display: inline-block;
+    float: right;
+}
+#left-header-title {
+    margin: 10px;
+    display: inline-block;
+}

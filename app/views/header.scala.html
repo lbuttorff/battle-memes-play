@@ -1,0 +1,72 @@
+@(user: User)
+<!-- TODO: Figure out why modals are not working -->
+<div id="header">
+    <div id="left-header-title">
+        <h2>Battle Memes</h2>
+    </div>
+    <div id="right-header-buttons">
+        @if(user != null){
+            <button data-toggle="modal" data-target="#postModal">New Post</button>
+        }else{
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signInModal">Sign In</button>
+        }
+    </div>
+</div>
+<div id="postModal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Post</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" name="text" />
+                    <button class="btn btn-default" type="submit">Post</button>
+                </form>
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="signUpModal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sign Up</h4>
+            </div>
+            <form action="/signup" method="post">
+                <div class="modal-body">
+                    <input name="email" type="email" />
+                    <input name="username" type="text" />
+                    <input name="password" type="password" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" value="Sign Up">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="signInModal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sign In</h4>
+            </div>
+            <form action="/signin" method="post">
+                <div class="modal-body">
+                    <input name="email" type="email" />
+                    <input name="password" type="password" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" value="Sign In">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

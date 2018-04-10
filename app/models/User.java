@@ -25,7 +25,7 @@ public class User extends Model {
     private String passwordHash;
     @Formats.DateTime(pattern="dd/MM/yyyy")
     private Date joinDate;
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
     @Constraints.Required
     private String uuid;
@@ -55,7 +55,11 @@ public class User extends Model {
 
     public static User getCurrentUser(){
         String temp = session().get("uuid");
-        return find.query().where().eq("uuid", temp).findUnique();
+        List<User> possibles = find.query().where().eq("uuid", temp).findList();
+        if(possibles.size() != 1){
+            return null;
+        }
+        return possibles.get(0);
     }
 
     public String getUsername() {

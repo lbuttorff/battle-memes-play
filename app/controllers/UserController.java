@@ -1,16 +1,12 @@
 package controllers;
 
 import com.google.inject.Inject;
-import controllers.routes;
-import models.Post;
 import models.User;
 import play.data.FormFactory;
 import play.filters.csrf.AddCSRFToken;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
-import play.mvc.Http;
 import play.mvc.Result;
-import views.html.global;
 import views.html.signin;
 import views.html.signup;
 
@@ -44,7 +40,7 @@ public class UserController extends Controller {
             return ok(signup.render("Your passwords did not match!"));
         }
         User user = new User(username, email, pass);
-        session("token",user.createToken());
+        session().put("token",user.createToken());
         return redirect(controllers.routes.FeedController.getGlobalFeed());    }
 
     @AddCSRFToken
@@ -64,7 +60,7 @@ public class UserController extends Controller {
         if(user == null){
             return ok(signin.render("An invalid Email or Password was entered."));
         }
-        session("token",user.createToken());
+        session().put("token",user.createToken());
         return redirect(controllers.routes.FeedController.getGlobalFeed());
     }
 }

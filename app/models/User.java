@@ -11,8 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static play.mvc.Controller.session;
-
 @Entity
 public class User extends Model {
     @Id
@@ -54,7 +52,7 @@ public class User extends Model {
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
     public static User getCurrentUser(){
-        String temp = session("token");
+        String temp = Http.Context.current().session().get("token");
         List<User> possibles = find.query().where().eq("uuid", temp).findList();
         if(possibles.size() != 1){
             return null;

@@ -10,6 +10,8 @@ scalaVersion := "2.11.11"
 
 libraryDependencies ++= Seq( javaJdbc , guice , javaWs , "org.mindrot" % "jbcrypt" % "0.3m")
 
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
+
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
 
       

@@ -2,14 +2,18 @@
 <!-- TODO: Figure out why modals are not working -->
 <div id="header">
     <div id="left-header-title">
-        <h2>Battle Memes</h2>
+        <h1><a href="@routes.Application.index()">Battle Memes</a>  </h1>
+        @if(user != null) {
+            <h2>|</h2>
+            <h4 id="username">Welcome, @user.getUsername()!</h4>
+        }
     </div>
     <div id="right-header-buttons">
         @if(user != null){
-            <button data-toggle="modal" data-target="#postModal">New Post</button>
+            <a type="button" href="/post/new" class="btn btn-secondary">New Post</a>
         }else{
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signInModal">Sign In</button>
+            <a type="button" href="/signup" class="btn btn-secondary">Sign Up</a>
+            <a type="button" href="/signin" class="btn btn-secondary">Sign In</a>
         }
     </div>
 </div>

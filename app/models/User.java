@@ -54,7 +54,7 @@ public class User extends Model {
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
     public static User getCurrentUser(){
-        String temp = session().get("uuid");
+        String temp = session("token");
         List<User> possibles = find.query().where().eq("uuid", temp).findList();
         if(possibles.size() != 1){
             return null;

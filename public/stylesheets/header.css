@@ -2,15 +2,27 @@
     position:absolute;
     width: 100%;
     top: 0;
-    height: 60px;
+    height: 80px;
     background: lightblue;
 }
 #right-header-buttons {
-    margin: 10px;
-    display: inline-block;
+    padding-top:20px;
+    padding-right:10px;
+    display: inline;
     float: right;
 }
 #left-header-title {
-    margin: 10px;
-    display: inline-block;
+    line-height: 80px;
+    margin-left:10px;
+    display: inline;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+#username {
+    padding-left: 10px;
+}
+h1, h2, h4 {
+    display: inline;
 }

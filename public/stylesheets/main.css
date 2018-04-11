@@ -2,10 +2,17 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    background-color: lightgrey;
 }
 #body {
-    margin-top:80px;
-    width:80%;
-    padding:10%;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
     display:inline-block;
+}
+.center-div {
+    text-align: center;
+    vertical-align: middle;
 }

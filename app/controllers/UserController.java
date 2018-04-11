@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.inject.Inject;
+import controllers.routes;
 import models.User;
 import play.data.FormFactory;
 import play.filters.csrf.AddCSRFToken;
@@ -29,15 +30,18 @@ public class UserController extends Controller {
     @RequireCSRFCheck
     public Result signUp(){
         Map<String, String[]> json = request().body().asFormUrlEncoded();
-        if(!json.containsKey("username") || !json.containsKey("email") || !json.containsKey("password") || !json.containsKey("confirmPassword")){
+        if(!json.containsKey("username") || !json.containsKey("email") || !json.containsKey("password") || !json.containsKey("confPassword")){
             return ok(signup.render("Please fill out all fields!"));
         }
         String username = json.get("username")[0];
         String email = json.get("email")[0];
         String pass = json.get("password")[0];
-        String conf = json.get("confirmPassword")[0];
+        String conf = json.get("confPassword")[0];
         if(!pass.equals(conf)){
             return ok(signup.render("Your passwords did not match!"));
+        }
+        if(User.findByEmail(email) != null){
+            return redirect(controllers.routes.UserController.getSignIn());
         }
         User user = new User(username, email, pass);
         session().put("token",user.createToken());

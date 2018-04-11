@@ -13,11 +13,12 @@
         @header(user)
 
         <div id="body">
-            <div>
+            <div id="newPostDiv" class="center-div">
                 <form class="form-group" action="/post/new" method="post">
                     @import helper._
                     @CSRF.formField
-                    <textarea class="form-text form-group form-text-size" name="text" placeholder="Enter your memes here..."></textarea>
+                    <textarea class="form-text-size" name="text" placeholder="Enter your memes here..."></textarea>
+                    <br>
                     <input class="form-group btn btn-primary" type="submit" value="Create Post" />
                 </form>
             </div>

@@ -19,3 +19,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 #Generate test data
 GET     /generateData               controllers.Application.generateUsersAndPosts()
+GET     /clearCookies               controllers.Application.clearSession()

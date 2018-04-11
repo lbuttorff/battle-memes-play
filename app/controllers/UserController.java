@@ -7,6 +7,7 @@ import play.data.FormFactory;
 import play.filters.csrf.AddCSRFToken;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import views.html.signin;
 import views.html.signup;
@@ -44,7 +45,8 @@ public class UserController extends Controller {
             return redirect(controllers.routes.UserController.getSignIn());
         }
         User user = new User(username, email, pass);
-        session().put("token",user.createToken());
+        //response().setCookie(Http.Cookie.builder("token", user.createToken()).build());
+        session().put("token", user.createToken());
         return redirect(controllers.routes.FeedController.getGlobalFeed());    }
 
     @AddCSRFToken
@@ -64,7 +66,8 @@ public class UserController extends Controller {
         if(user == null){
             return ok(signin.render("An invalid Email or Password was entered."));
         }
-        session().put("token",user.createToken());
+        //response().setCookie(Http.Cookie.builder("token", user.createToken()).build());
+        session().put("token", user.createToken());
         return redirect(controllers.routes.FeedController.getGlobalFeed());
     }
 }

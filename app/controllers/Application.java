@@ -12,6 +12,11 @@ public class Application extends Controller {
         return ok(main.render(null));
     }
 
+    public Result clearSession(){
+        Http.Context.current().session().clear();
+        return ok(main.render(null));
+    }
+
     public Result generateUsersAndPosts(){
         for(int i=0;i<5;i++){
             User u = new User("user"+i,"u@u."+i,"pass"+i);

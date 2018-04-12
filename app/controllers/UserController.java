@@ -42,7 +42,10 @@ public class UserController extends Controller {
             return ok(signup.render("Your passwords did not match!"));
         }
         if(User.findByEmail(email) != null){
-            return redirect(controllers.routes.UserController.getSignIn());
+            return ok(signup.render("A User with that email already exists."));
+        }
+        if(User.findByUsername(username) != null){
+            return ok(signup.render("A User with that username already exists."));
         }
         User user = new User(username, email, pass);
         //response().setCookie(Http.Cookie.builder("token", user.createToken()).build());

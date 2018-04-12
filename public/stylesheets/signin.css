@@ -48,3 +48,7 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+#error-div {
+  text-align: center;
+  color: #fc2000;
+}

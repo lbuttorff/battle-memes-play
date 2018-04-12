@@ -48,6 +48,10 @@ public class User extends Model {
         return find.query().where().eq("email", email).findUnique();
     }
 
+    public static User findByUsername(String username){
+        return find.query().where().eq("username", username).findUnique();
+    }
+
     //Static finder that will return a user based on the extend methods of Model
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

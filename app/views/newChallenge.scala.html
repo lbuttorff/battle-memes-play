@@ -1,29 +1,35 @@
-@(user:User)
+@(user:User)(post: Post)
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>New Post</title>
+        <title>New Challenge</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
         <link href="@routes.Assets.at("/stylesheets/header.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/main.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/newPost.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/bootstrap.min.css")" rel="stylesheet">
+        <link href="@routes.Assets.at("/stylesheets/feed.css")" rel="stylesheet">
     </head>
     <body>
         @header(user)
 
         <div id="body">
+            <div class="feed-tr center-div">
+                @post.getUser().getUsername() | @post.getPostDate()
+                <br>
+                @post.getText()
+            </div>
             <div id="newPostDiv" class="center-div">
-                <form class="form-group" action="/post/new" method="post">
+                <form class="form-group" action="/challenge/new/@post.getId" method="post">
                     @import helper._
                     @CSRF.formField
-                    <textarea class="form-text-size" name="text" placeholder="Enter your memes here..."></textarea>
+                    <textarea class="form-text-size" name="text" placeholder="Enter your challenge memes here..."></textarea>
                     <br>
-                    <!--<input type="file" id="file-upload" name="file" accept="image/*" />
+                        <!--<input type="file" id="file-upload" name="file" accept="image/*" />
                     <br>-->
                     <a class="form-group btn btn-secondary" href="/global">Cancel</a>
-                    <input class="form-group btn btn-primary" type="submit" value="Create Post" />
+                    <input class="form-group btn btn-primary" type="submit" value="Create Challenge" />
                 </form>
             </div>
         </div>

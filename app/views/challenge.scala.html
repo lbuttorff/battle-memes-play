@@ -1,9 +1,9 @@
-@(user: User, posts: List[Post])
+@(user: User, challenges: List[Challenge])
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Global Feed</title>
+        <title>Global Challenges</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
         <link rel="stylesheet" href="@routes.Assets.at("/stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" href="@routes.Assets.at("/stylesheets/header.css")">
@@ -16,14 +16,14 @@
 
         <div id="body">
             <div id="feed-table">
-                @for(post <- posts){
-                    <div class="feed-tr">
-                        <p hidden>@post.getId()</p>
-                        @post.getUser().getUsername() | @post.getPostDate()
-                        <br>
-                        @post.getText()
-                    </div>
-                }
+            @for(challenge <- challenges){
+                <div class="feed-tr">
+                    <p hidden>@challenge.getId()</p>
+                    @challenge.getChallenger().getUser().getUsername | @challenge.getChallengee().getUser().getUsername()
+                    <br>
+                    @challenge.getDate()
+                </div>
+            }
             </div>
         </div>
 

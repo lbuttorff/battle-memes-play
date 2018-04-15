@@ -73,4 +73,15 @@ public class UserController extends Controller {
         session().put("token", user.createToken());
         return redirect(controllers.routes.FeedController.getGlobalFeed());
     }
+
+    @RequireCSRFCheck
+    public Result logout(){
+        User user = User.getCurrentUser();
+        if(user != null){
+            user.setUuid("");
+            user.save();
+        }
+        session().clear();
+        return redirect(controllers.routes.Application.index());
+    }
 }

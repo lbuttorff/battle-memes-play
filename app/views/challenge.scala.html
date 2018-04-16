@@ -16,12 +16,34 @@
 
         <div id="body">
             <div id="feed-table">
+            @import helper._
             @for(challenge <- challenges){
                 <div class="feed-tr">
-                    <p hidden>@challenge.getId()</p>
-                    @challenge.getChallenger().getUser().getUsername | @challenge.getChallengee().getUser().getUsername()
+                    <div class="challenge-column">
+                        <h6>@challenge.getChallenger().getUser().getUsername</h6>
+                        <br>
+                        <p>@challenge.getChallenger().getText()</p>
+                        <form class="vote-form" method="post" action="/c/@challenge.getId()/@challenge.getChallenger().getId()">
+                            @CSRF.formField
+                            <button type="submit" class="btn-outline-secondary btn">Vote</button>
+                        </form>
+                        <h6 class="vote-count">@challenge.getCountChallenger()</h6>
+                    </div>
+                    <div class="challenge-column">
+                        <h6>@challenge.getChallengee().getUser().getUsername</h6>
+                        <br>
+                        <p>@challenge.getChallengee().getText()</p>
+                        <form class="vote-form" method="post" action="/c/@challenge.getId()/@challenge.getChallengee().getId()">
+                            @CSRF.formField
+                            <button type="submit" class="btn-outline-secondary btn">Vote</button>
+                        </form>
+                        <h6 class="vote-count">@challenge.getCountChallengee()</h6>
+                    </div>
                     <br>
-                    @challenge.getDate()
+                    <div>
+                        <p id="challengeId" hidden>@challenge.getId()</p>
+                        @challenge.getDate()
+                    </div>
                 </div>
             }
             </div>

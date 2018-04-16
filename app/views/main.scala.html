@@ -3,14 +3,19 @@
 <html>
     <head>
         <title>Battle Memes</title>
-        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/header.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/footer.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
     </head>
     <body>
         @header(user)
-
+        <div id="body" class="center-div">
+            <p>Welcome to Battle Memes!</p>
+            <p>This is placeholder text for now... More memes to come!</p>
+        </div>
+        @footer()
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </body>
 </html>

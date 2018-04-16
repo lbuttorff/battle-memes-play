@@ -74,7 +74,6 @@ public class UserController extends Controller {
         return redirect(controllers.routes.FeedController.getGlobalFeed());
     }
 
-    @RequireCSRFCheck
     public Result logout(){
         User user = User.getCurrentUser();
         if(user != null){

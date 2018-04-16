@@ -8,5 +8,17 @@
     padding: 20px;
     border-radius: 10px 30px;
     background-color: white;
-
+}
+.challenge-column {
+    float:left;
+    width:50%;
+}
+h6 {
+    display: inline;
+}
+.vote-count {
+    padding-left: 5px;
+}
+.vote-form {
+    display: inline;
 }

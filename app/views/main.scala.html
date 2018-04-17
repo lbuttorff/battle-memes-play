@@ -11,10 +11,19 @@
     </head>
     <body>
         @header(user)
+
         <div id="body" class="center-div">
             <p>Welcome to Battle Memes!</p>
             <p>This is placeholder text for now... More memes to come!</p>
+            <form action="@routes.FeedController.getGlobalFeed()" method="get">
+                <input type="submit" value="Global Feed" class="btn btn-secondary">
+            </form>
+            <br>
+            <form action="@routes.FeedController.getGlobalChallengeFeed()" method="get">
+                <input type="submit" value="Global Challenge Feed" class="btn btn-secondary">
+            </form>
         </div>
+
         @footer()
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </body>

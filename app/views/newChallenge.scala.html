@@ -15,10 +15,12 @@
         @header(user)
 
         <div id="body">
-            <div class="feed-tr center-div">
-                @post.getUser().getUsername() | @post.getPostDate()
-                <br>
-                @post.getText()
+            <div id="feed-table">
+                <div class="feed-tr">
+                    @post.getUser().getUsername() | @post.getPostDate()
+                    <br>
+                    @post.getText()
+                </div>
             </div>
             <div id="newPostDiv" class="center-div">
                 <form class="form-group" action="/challenge/new/@post.getId" method="post">

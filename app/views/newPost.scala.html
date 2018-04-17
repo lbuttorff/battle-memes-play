@@ -6,6 +6,7 @@
         <title>New Post</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
         <link href="@routes.Assets.at("/stylesheets/header.css")" rel="stylesheet">
+        <link href="@routes.Assets.at("/stylesheets/footer.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/main.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/newPost.css")" rel="stylesheet">
         <link href="@routes.Assets.at("/stylesheets/bootstrap.min.css")" rel="stylesheet">
@@ -27,5 +28,7 @@
                 </form>
             </div>
         </div>
+
+        @footer()
     </body>
 </html>

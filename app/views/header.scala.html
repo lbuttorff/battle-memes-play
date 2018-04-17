@@ -3,21 +3,31 @@
 <div id="header">
     <div id="left-header-title">
         @if(user != null) {
-            <h1><a href="@routes.FeedController.getGlobalFeed()">Battle Memes</a>  </h1>
-            <h2>|</h2>
-            <h4 id="username">Welcome, @user.getUsername()!</h4>
+            <h2><a href="@routes.FeedController.getGlobalFeed()"><strong>Battle Memes</strong></a>  </h2>
+            <h3>|</h3>
+            <h5 id="username">Welcome, </h5><h5 id="actual-username">@user.getUsername()</h5><h5> !</h5>
         }else{
             <h1><a href="@routes.Application.index()">Battle Memes</a>  </h1>
         }
     </div>
     <div id="right-header-buttons">
         @if(user != null){
-            <a type="button" href="/challenge" class="btn btn-secondary">Challenges</a>
-            <a type="button" href="/post/new" class="btn btn-primary">New Post</a>
-            <a type="button" href="/logout" class="btn btn-outline-dark">Sign Out</a>
+            <form class="inline" action="@routes.PostController.getNewPost()" method="get">
+                <input type="submit" class="btn btn-outline-primary" value="New Post">
+            </form>
+            <form class="inline" action="@routes.FeedController.getGlobalChallengeFeed()" method="get">
+                <input type="submit" class="btn btn-outline-secondary" value="Challenges">
+            </form>
+            <form class="inline" action="@routes.UserController.logout()" method="get">
+                <input type="submit" class="btn btn-outline-dark" value="Sign Out">
+            </form>
         }else{
-            <a type="button" href="/signup" class="btn btn-secondary">Sign Up</a>
-            <a type="button" href="/signin" class="btn btn-primary">Sign In</a>
+            <form class="inline" action="@routes.UserController.getSignUp()" method="get">
+                <input type="submit" class="btn btn-outline-secondary" value="Sign Up">
+            </form>
+            <form class="inline" action="@routes.UserController.getSignIn()" method="get">
+                <input type="submit" class="btn btn-outline-primary" value="Sign In">
+            </form>
         }
     </div>
 </div>

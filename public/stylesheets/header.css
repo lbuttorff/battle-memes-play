@@ -3,7 +3,7 @@
     width: 100%;
     top: 0;
     height: 80px;
-    background: lightblue;
+    background: #eeeeee;
 }
 #right-header-buttons {
     padding-top:20px;
@@ -16,14 +16,20 @@
     margin-left:10px;
     display: inline;
 }
-a {
+#header a {
     text-decoration: none;
-    color: black;
+    color: #777;
     border-radius: 1px;
 }
 #username {
     padding-left: 10px;
 }
-h1, h2, h4 {
+#actual-username {
+    color: cornflowerblue;
+}
+.inline {
+    display:inline;
+}
+h1, h2, h3, h5 {
     display: inline;
 }

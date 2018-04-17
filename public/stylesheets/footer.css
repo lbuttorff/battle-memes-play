@@ -3,9 +3,9 @@
     width: 100%;
     bottom: 0;
     height: 30px;
-    background: lightblue;
+    background: #eeeeee;
 }
 #footer a {
     text-decoration: none;
-    text-color: black;
+    color: #777;
 }

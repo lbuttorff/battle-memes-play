@@ -8,7 +8,6 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.profile;
-import views.html.personalProfile;
 import views.html.signin;
 import views.html.signup;
 

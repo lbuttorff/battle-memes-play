@@ -25,6 +25,8 @@ public class User extends Model {
     private Date joinDate;
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
+    @ManyToMany
+    private List<User> friends;
     @Constraints.Required
     private String uuid;
 
@@ -64,6 +66,10 @@ public class User extends Model {
         return possibles.get(0);
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -86,6 +92,18 @@ public class User extends Model {
 
     public Date getJoinDate() {
         return joinDate;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
     }
 
     public String getUuid() {

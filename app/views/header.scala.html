@@ -3,29 +3,29 @@
 <div id="header">
     <div id="left-header-title">
         @if(user != null) {
-            <h2><a href="@routes.FeedController.getGlobalFeed()"><strong>Battle Memes</strong></a>  </h2>
+            <h2><a href="@routes.FeedController.getGlobalFeed"><strong>Battle Memes</strong></a>  </h2>
             <h3>|</h3>
-            <h5 id="username">Welcome, </h5><h5 id="actual-username">@user.getUsername()</h5><h5> !</h5>
+            <h5 id="username">Welcome, </h5><a href="/profile" id="actual-username">@user.getUsername</a><h5> !</h5>
         }else{
-            <h1><a href="@routes.Application.index()">Battle Memes</a>  </h1>
+            <h1><a href="@routes.Application.index">Battle Memes</a>  </h1>
         }
     </div>
     <div id="right-header-buttons">
         @if(user != null){
-            <form class="inline" action="@routes.PostController.getNewPost()" method="get">
+            <form class="inline" action="@routes.PostController.getNewPost" method="get">
                 <input type="submit" class="btn btn-outline-primary" value="New Post">
             </form>
-            <form class="inline" action="@routes.FeedController.getGlobalChallengeFeed()" method="get">
+            <form class="inline" action="@routes.FeedController.getGlobalChallengeFeed" method="get">
                 <input type="submit" class="btn btn-outline-secondary" value="Challenges">
             </form>
-            <form class="inline" action="@routes.UserController.logout()" method="get">
+            <form class="inline" action="@routes.UserController.logout" method="get">
                 <input type="submit" class="btn btn-outline-dark" value="Sign Out">
             </form>
         }else{
-            <form class="inline" action="@routes.UserController.getSignUp()" method="get">
+            <form class="inline" action="@routes.UserController.getSignUp" method="get">
                 <input type="submit" class="btn btn-outline-secondary" value="Sign Up">
             </form>
-            <form class="inline" action="@routes.UserController.getSignIn()" method="get">
+            <form class="inline" action="@routes.UserController.getSignIn" method="get">
                 <input type="submit" class="btn btn-outline-primary" value="Sign In">
             </form>
         }

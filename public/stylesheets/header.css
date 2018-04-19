@@ -25,7 +25,8 @@
     padding-left: 10px;
 }
 #actual-username {
-    color: cornflowerblue;
+    color: cornflowerblue !important;
+    font-size: x-large;
 }
 .inline {
     display:inline;

@@ -17,32 +17,32 @@
         <div id="body">
             <div id="feed-table">
             @import helper._
-            @for(challenge <- challenges){
+            @for(challenge <- challenges.reverse){
                 <div class="feed-tr">
                     <div class="challenge-column">
-                        <h6>@challenge.getChallenger().getUser().getUsername</h6>
+                        <h6>@challenge.getChallenger.getUser.getUsername</h6>
                         <br>
-                        <p>@challenge.getChallenger().getText()</p>
-                        <form class="vote-form" method="post" action="/c/@challenge.getId()/@challenge.getChallenger().getId()">
+                        <p>@challenge.getChallenger.getText</p>
+                        <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallenger.getId">
                             @CSRF.formField
                             <button type="submit" class="btn-outline-secondary btn">Vote</button>
                         </form>
-                        <h6 class="vote-count">@challenge.getCountChallenger()</h6>
+                        <h6 class="vote-count">@challenge.getCountChallenger</h6>
                     </div>
                     <div class="challenge-column">
-                        <h6>@challenge.getChallengee().getUser().getUsername</h6>
+                        <h6>@challenge.getChallengee.getUser.getUsername</h6>
                         <br>
-                        <p>@challenge.getChallengee().getText()</p>
-                        <form class="vote-form" method="post" action="/c/@challenge.getId()/@challenge.getChallengee().getId()">
+                        <p>@challenge.getChallengee.getText</p>
+                        <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallengee.getId">
                             @CSRF.formField
                             <button type="submit" class="btn-outline-secondary btn">Vote</button>
                         </form>
-                        <h6 class="vote-count">@challenge.getCountChallengee()</h6>
+                        <h6 class="vote-count">@challenge.getCountChallengee</h6>
                     </div>
                     <br>
-                    <div>
-                        <p id="challengeId" hidden>@challenge.getId()</p>
-                        @challenge.getDate()
+                    <div id="challengeDateDiv">
+                        <p id="challengeId" hidden>@challenge.getId</p>
+                        <p id="challengeDate">@challenge.getChallenger.getUser.getUsername on @challenge.getDate.format("MMMM dd YYYY")</p>
                     </div>
                 </div>
             }

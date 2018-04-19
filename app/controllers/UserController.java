@@ -1,14 +1,14 @@
 package controllers;
 
 import com.google.inject.Inject;
-import controllers.routes;
 import models.User;
 import play.data.FormFactory;
 import play.filters.csrf.AddCSRFToken;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
-import play.mvc.Http;
 import play.mvc.Result;
+import views.html.profile;
+import views.html.personalProfile;
 import views.html.signin;
 import views.html.signup;
 
@@ -82,5 +82,22 @@ public class UserController extends Controller {
         }
         session().clear();
         return redirect(controllers.routes.Application.index());
+    }
+
+    public Result getProfile(){
+        User user = User.getCurrentUser();
+        if(user == null){
+            return redirect(controllers.routes.UserController.getSignIn());
+        }
+        return ok(profile.render(user, user));
+    }
+
+    public Result getOtherProfile(long id){
+        User user = User.find.byId(id);
+        User user1 = User.getCurrentUser();
+        if(user == null){
+            return redirect(controllers.routes.FeedController.getGlobalFeed());
+        }
+        return ok(profile.render(user1, user));
     }
 }

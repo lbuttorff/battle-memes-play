@@ -3,10 +3,7 @@ package models;
 import io.ebean.*;
 import play.data.format.Formats;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 public class Post extends Model {
     @Id
     private long id;
+    @Column(length = 500)
     private String text;
     @ManyToOne
     private User user;

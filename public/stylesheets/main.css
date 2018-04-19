@@ -16,3 +16,16 @@ body {
 #challengeBtn {
     font-size: small;
 }
+#challengeDate {
+    display:inline;
+}
+#challengeDateDiv {
+    text-align: center;
+}
+#friendsList {
+    display:inline;
+    width:20%;
+    height:80%;
+    margin: 10%;
+    background-color: white;
+}

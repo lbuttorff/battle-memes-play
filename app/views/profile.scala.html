@@ -1,9 +1,9 @@
-@(user: User, posts: List[Post])
+@(user1:User)(user:User)
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Global Feed</title>
+        <title>@user.getUsername Profile</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
         <link rel="stylesheet" href="@routes.Assets.at("/stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" href="@routes.Assets.at("/stylesheets/header.css")">
@@ -12,24 +12,28 @@
         <link rel="stylesheet" href="@routes.Assets.at("/stylesheets/feed.css")">
     </head>
     <body>
-        @header(user)
-
+        @header(user1)
         <div id="body">
             <div id="feed-table">
-                @for(post <- posts.reverse){
-                    <div class="feed-tr">
-                        <p hidden>@post.getId</p>
-                        <a href="/profile/@post.getUser.getId">@post.getUser.getUsername</a> | @post.getPostDate.format("MMMM dd YYYY")
-                        <br>
-                        @post.getText
-                        <br>
-                        <a id="challengeBtn" class="close" href="/challenge/new/@post.getId">Challenge +</a>
-                    </div>
+            @for(post <- user.getPosts.reverse){
+                <div class="feed-tr">
+                    <p hidden>@post.getId</p>
+                    <a href="#">@post.getUser.getUsername</a> | @post.getPostDate.format("MMMM dd YYYY")
+                    <br>
+                    @post.getText
+                    <br>
+                    <a id="challengeBtn" class="close" href="/challenge/new/@post.getId">Challenge +</a>
+                </div>
+            }
+            </div>
+            <div id="friendsList">
+                <table>
+                @for(u <- user.getFriends){
+                    <tr><td>@u.getUsername</td></tr>
                 }
+                </table>
             </div>
         </div>
-
         @footer()
-        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </body>
 </html>

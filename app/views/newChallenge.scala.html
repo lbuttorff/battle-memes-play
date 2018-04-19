@@ -17,16 +17,16 @@
         <div id="body">
             <div id="feed-table">
                 <div class="feed-tr">
-                    @post.getUser().getUsername() | @post.getPostDate()
+                    @post.getUser.getUsername | @post.getPostDate
                     <br>
-                    @post.getText()
+                    @post.getText
                 </div>
             </div>
             <div id="newPostDiv" class="center-div">
                 <form class="form-group" action="/challenge/new/@post.getId" method="post">
                     @import helper._
                     @CSRF.formField
-                    <textarea class="form-text-size" name="text" placeholder="Enter your challenge memes here..." autofocus></textarea>
+                    <textarea class="form-text-size" name="text" placeholder="Enter your challenge memes here..." maxlength="500" autofocus></textarea>
                     <br>
                         <!--<input type="file" id="file-upload" name="file" accept="image/*" />
                     <br>-->

@@ -19,6 +19,7 @@ public class Post extends Model {
     private Date postDate;
     @OneToMany(mappedBy = "challengee")
     private List<Challenge> challengeList;
+    private String image;
 
     public Post(String text, User user){
         this.text = text;
@@ -67,5 +68,13 @@ public class Post extends Model {
     public void addChallenge(Challenge challenge){
         this.challengeList.add(challenge);
         this.save();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

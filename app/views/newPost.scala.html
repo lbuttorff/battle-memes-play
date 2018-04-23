@@ -16,13 +16,13 @@
 
         <div id="body">
             <div id="newPostDiv" class="center-div">
-                <form class="form-group" action="/post/new" method="post">
+                <form class="form-group" enctype="multipart/form-data" action="/post/new" method="post">
                     @import helper._
                     @CSRF.formField
                     <textarea class="form-text-size" name="text" placeholder="Enter your memes here..." maxlength="500" autofocus></textarea>
                     <br>
-                    <!--<input type="file" id="file-upload" name="file" accept="image/*" />
-                    <br>-->
+                    <input type="file" id="file-upload" name="picture" accept="image/*" />
+                    <br>
                     <a class="form-group btn btn-secondary" href="/global">Cancel</a>
                     <input class="form-group btn btn-primary" type="submit" value="Create Post" />
                 </form>

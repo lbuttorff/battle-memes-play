@@ -18,9 +18,12 @@
             @for(post <- user.getPosts.reverse){
                 <div class="feed-tr">
                     <p hidden>@post.getId</p>
-                    <a href="#">@post.getUser.getUsername</a> | @post.getPostDate.format("MMMM dd YYYY")
+                    <h5><a href="#">@post.getUser.getUsername</a> | @post.getPostDate.format("MMMM dd YYYY")</h5>
                     <br>
-                    @post.getText
+                    <p>@post.getText</p>
+                    @if(post.getImage != null){
+                        <img src="@routes.Assets.at("images/posts/"+post.getImage)">
+                    }
                     <br>
                     <a id="challengeBtn" class="close" href="/challenge/new/@post.getId">Challenge +</a>
                 </div>

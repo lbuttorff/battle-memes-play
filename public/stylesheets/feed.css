@@ -1,7 +1,12 @@
 #feed-table {
-    margin: 40px 25%;
+    margin: 40px auto;
     width: 50%;
+    min-width: 750px;
+}
+#challenge-table{
+    margin: 40px auto;
     min-width: 700px;
+    max-width: 80%;
 }
 .feed-tr {
     margin-bottom: 10px;
@@ -22,4 +27,7 @@
 }
 .vote-form {
     display: inline;
+}
+img {
+    margin-bottom:10px;
 }

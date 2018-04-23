@@ -17,19 +17,22 @@
         <div id="body">
             <div id="feed-table">
                 <div class="feed-tr">
-                    @post.getUser.getUsername | @post.getPostDate
+                    <h5>@post.getUser.getUsername | @post.getPostDate</h5>
                     <br>
-                    @post.getText
+                    <p>@post.getText</p>
+                    @if(post.getImage != null){
+                        <img src="@routes.Assets.at("images/posts/"+post.getImage)">
+                    }
                 </div>
             </div>
             <div id="newPostDiv" class="center-div">
-                <form class="form-group" action="/challenge/new/@post.getId" method="post">
+                <form class="form-group" enctype="multipart/form-data" action="/challenge/new/@post.getId" method="post">
                     @import helper._
                     @CSRF.formField
                     <textarea class="form-text-size" name="text" placeholder="Enter your challenge memes here..." maxlength="500" autofocus></textarea>
                     <br>
-                        <!--<input type="file" id="file-upload" name="file" accept="image/*" />
-                    <br>-->
+                    <input type="file" id="file-upload" name="picture" accept="image/*" />
+                    <br>
                     <a class="form-group btn btn-secondary" href="/global">Cancel</a>
                     <input class="form-group btn btn-primary" type="submit" value="Create Challenge" />
                 </form>

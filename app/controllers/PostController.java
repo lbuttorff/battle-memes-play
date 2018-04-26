@@ -121,12 +121,15 @@ public class PostController extends Controller {
         return redirect(controllers.routes.FeedController.getGlobalChallengeFeed());
     }
 
-    public String fileUpload(Http.MultipartFormData.FilePart<File> picture, long postId) throws IOException {
+    private String fileUpload(Http.MultipartFormData.FilePart<File> picture, long postId) throws IOException {
         FileInputStream in = null;
         FileOutputStream out = null;
         try {
             File file = picture.getFile();
             String contentType = picture.getContentType();
+            System.out.println("Attempting to move file to: "+System.getProperty("user.dir")+"/public/images/posts/"+
+                    postId+"."+ contentType.substring(contentType.indexOf("/")+1)
+            );
             File newFile = new File(System.getProperty("user.dir")+"/public/images/posts/"+postId+"."+
                     contentType.substring(contentType.indexOf("/")+1));
             if(!newFile.exists()){
@@ -142,7 +145,7 @@ public class PostController extends Controller {
                 out.write(c);
             }
             return postId+"."+contentType.substring(contentType.indexOf("/")+1);
-        }finally {
+        } finally {
             if (in != null) {
                 in.close();
             }

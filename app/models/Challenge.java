@@ -2,10 +2,13 @@ package models;
 
 import io.ebean.Finder;
 import io.ebean.Model;
+import io.ebean.annotation.DbJson;
 import play.data.format.Formats;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Challenge extends Model {
@@ -16,14 +19,18 @@ public class Challenge extends Model {
     private Post challenger;
     @ManyToOne
     private Post challengee;
-    private long countChallenger;
-    private long countChallengee;
+    @DbJson
+    private List<Long> countChallenger;
+    @DbJson
+    private List<Long> countChallengee;
     @Formats.DateTime(pattern="dd/MM/yyyy")
     private Date date;
 
     public Challenge(Post challenger, Post challengee){
         this.challengee = challengee;
         this.challenger = challenger;
+        this.countChallenger = new ArrayList<>();
+        this.countChallengee = new ArrayList<>();
         this.date = new Date();
     }
 
@@ -50,29 +57,33 @@ public class Challenge extends Model {
     }
 
     public long getCountChallenger() {
-        return countChallenger;
-    }
-
-    public void setCountChallenger(long countChallenger) {
-        this.countChallenger = countChallenger;
+        return countChallenger.size();
     }
 
     public long getCountChallengee() {
-        return countChallengee;
+        return countChallengee.size();
     }
 
-    public void setCountChallengee(long countChallengee) {
-        this.countChallengee = countChallengee;
+    public void addCountChallengee(long id){
+        if(!hasVoted(id)){
+            this.countChallengee.add(id);
+            this.save();
+        };
     }
 
-    public void addCountChallengee(){
-        this.countChallengee++;
-        this.save();
+    public void addCountChallenger(long id){
+        if(!hasVoted(id)){
+            this.countChallenger.add(id);
+            this.save();
+        };
     }
 
-    public void addCountChallenger(){
-        this.countChallenger++;
-        this.save();
+    private boolean hasVoted(long id){
+        if(this.countChallengee.contains(id) || this.countChallenger.contains(id)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public Date getDate() {

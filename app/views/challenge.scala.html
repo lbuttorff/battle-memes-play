@@ -19,38 +19,42 @@
             @import helper._
             @for(challenge <- challenges.reverse){
                 <div class="feed-tr">
-                    <div class="challenge-column">
-                        <h5><a href="/profile/@challenge.getChallenger.getUser.getId">@challenge.getChallenger.getUser.getUsername</a></h5>
-                        <br>
-                        <p>@challenge.getChallenger.getText</p>
-                        @if(challenge.getChallenger.getImage != null){
-                            <img src="@routes.Assets.at("/images/posts/"+challenge.getChallenger.getImage)">
-                        }
-                        <br>
-                    </div>
-                    <div class="challenge-column">
-                        <h5><a href="/profile/@challenge.getChallengee.getUser.getId">@challenge.getChallengee.getUser.getUsername</a></h5>
-                        <br>
-                        <p>@challenge.getChallengee.getText</p>
-                        @if(challenge.getChallengee.getImage != null){
-                            <img src="@routes.Assets.at("/images/posts/"+challenge.getChallengee.getImage)">
-                        }
-                        <br>
-                    </div>
-                    <div id="vote-div">
+                    <div class="challenge-div">
                         <div class="challenge-column">
-                            <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallenger.getId">
-                                @CSRF.formField
-                            <button type="submit" class="btn-outline-secondary btn">Vote</button>
-                            </form>
-                            <h6 class="vote-count">@challenge.getCountChallenger</h6>
+                            <h5><a href="/profile/@challenge.getChallenger.getUser.getId">@challenge.getChallenger.getUser.getUsername</a></h5>
+                            <br>
+                            <p>@challenge.getChallenger.getText</p>
+                            @if(challenge.getChallenger.getImage != null){
+                                <img src="@routes.Assets.at("/images/posts/"+challenge.getChallenger.getImage)">
+                            }
+                            <br>
+                            <div id="vote-di">
+                                <div class="challenge-column">
+                                    <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallenger.getId">
+                                        @CSRF.formField
+                                    <button type="submit" class="btn-outline-secondary btn">Vote</button>
+                                    </form>
+                                    <h6 class="vote-count">@challenge.getCountChallenger</h6>
+                                </div>
+                            </div>
                         </div>
                         <div class="challenge-column">
-                            <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallengee.getId">
-                                @CSRF.formField
-                            <button type="submit" class="btn-outline-secondary btn">Vote</button>
-                            </form>
-                            <h6 class="vote-count">@challenge.getCountChallengee</h6>
+                            <h5><a href="/profile/@challenge.getChallengee.getUser.getId">@challenge.getChallengee.getUser.getUsername</a></h5>
+                            <br>
+                            <p>@challenge.getChallengee.getText</p>
+                            @if(challenge.getChallengee.getImage != null){
+                                <img src="@routes.Assets.at("/images/posts/"+challenge.getChallengee.getImage)">
+                            }
+                            <br>
+                            <div id="vote-div">
+                                <div class="challenge-column">
+                                    <form class="vote-form" method="post" action="/c/@challenge.getId/@challenge.getChallengee.getId">
+                                        @CSRF.formField
+                                    <button type="submit" class="btn-outline-secondary btn">Vote</button>
+                                    </form>
+                                    <h6 class="vote-count">@challenge.getCountChallengee</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>

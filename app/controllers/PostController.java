@@ -50,13 +50,12 @@ public class PostController extends Controller {
             return redirect(controllers.routes.UserController.getSignIn());
         }
         Post p = new Post(text, u);
-        p.save();
-        u.save();
         if (picture != null && picture.getContentType().contains("image/")) {
             String imageName = fileUpload(picture, p.getId());
             p.setImage(imageName);
-            p.save();
         }
+        p.save();
+        u.save();
         return redirect(controllers.routes.FeedController.getGlobalFeed());
     }
 
@@ -81,13 +80,12 @@ public class PostController extends Controller {
         }
         String text = requestData.get("text");
         Post p = new Post(text, u);
-        p.save();
-        u.save();
         if (picture != null && picture.getContentType().contains("image/")) {
             String imageName = fileUpload(picture, p.getId());
             p.setImage(imageName);
-            p.save();
         }
+        p.save();
+        u.save();
         Post challengee = Post.find.byId(id);
         if(challengee == null){
             return badRequest("The Post you were looking for does not exist.");
@@ -99,7 +97,8 @@ public class PostController extends Controller {
 
     @RequireCSRFCheck
     public Result challengeVote(long challengeId, long postId){
-        if(User.getCurrentUser() == null){
+        User user = User.getCurrentUser();
+        if(user == null){
             return redirect(controllers.routes.UserController.getSignIn());
         }
         Challenge c = Challenge.find.byId(challengeId);
@@ -111,9 +110,9 @@ public class PostController extends Controller {
             return badRequest("The post you voted for is not available.");
         }
         if(c.getChallengee().getId() == p.getId()){
-            c.addCountChallengee();
+            c.addCountChallengee(user.getId());
         }else if(c.getChallenger().getId() == p.getId()){
-            c.addCountChallenger();
+            c.addCountChallenger(user.getId());
         }else{
             return badRequest("The post voted for did not match either post on the challenge.");
         }

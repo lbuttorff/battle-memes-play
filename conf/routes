@@ -22,7 +22,7 @@ POST    /post/new                   controllers.PostController.newPost
 # Challenge
 GET     /challenge/new/:id          controllers.PostController.getNewChallenge(id: Long)
 POST    /challenge/new/:id          controllers.PostController.newChallenge(id: Long)
-POST    /c/:challengeId/:postId      controllers.PostController.challengeVote(challengeId: Long, postId: Long)
+POST    /c/:challengeId/:postId     controllers.PostController.challengeVote(challengeId: Long, postId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
